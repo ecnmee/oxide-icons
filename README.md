@@ -37,10 +37,12 @@ what happens when an icon from outside shows up there.
 
 ```html
 <div data-icon-family="ui" data-icon-isolation="strict">
-  <ox-icon name="add"></ox-icon>              <!-- fine, family "ui" -->
+  <ox-icon name="add"></ox-icon>   <!-- fine, family "ui" -->
   <ox-icon name="add" family="arrows"></ox-icon>  <!-- blocked -->
 </div>
 ```
+
+Read more: [How Oxide Icons thinks about icons](./docs/concepts.md).
 
 ## Why there is no release yet
 

@@ -43,6 +43,8 @@ decide, de forma previsível e configurável (`soft` / `exclusive` /
 </div>
 ```
 
+Lê mais: [Como o Oxide Icons pensa sobre ícones](./docs/concepts.pt.md).
+
 ## Porque ainda não há release
 
 Preferimos um repositório pequeno e honesto a uma lista de
