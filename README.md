@@ -50,8 +50,8 @@ We'd rather have a small, honest repository than a feature list that
 doesn't exist yet. An earlier version of this project was abandoned
 mid-refactor. Instead of publishing on top of that, we restarted with
 the architecture defined and documented before the first line of
-implementation. Development happens in the open, in the working
-repository.
+implementation. Development starts in a private working repository;
+this repository is where the project is published for the community.
 
 ## What's already built
 

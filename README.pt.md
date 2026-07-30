@@ -52,7 +52,8 @@ funcionalidades que ainda não existem. Uma versão anterior deste
 projecto foi abandonada a meio de uma refactorização. Em vez de
 publicar por cima disso, recomeçámos com a arquitectura definida e
 documentada antes da primeira linha de implementação. O desenvolvimento
-é público, no repositório de trabalho.
+começa num repositório de trabalho privado; este repositório é onde o
+projecto é publicado para a comunidade.
 
 ## O que já está feito
 
