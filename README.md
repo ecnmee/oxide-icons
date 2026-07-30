@@ -51,15 +51,13 @@ doesn't exist yet. An earlier version of this project was abandoned
 mid-refactor. Instead of publishing on top of that, we restarted with
 the architecture defined and documented before the first line of
 implementation. Development happens in the open, in the working
-repository (link to be added here once both repositories are
-published).
+repository.
 
 ## What's already built
 
 - Native Web Component (`<ox-icon>`), zero runtime dependencies.
 - On-demand (JIT) loading, per icon family.
-- Context and isolation system (`soft`/`exclusive`/`strict`), the
-  product's core differentiator.
+- Context and isolation system (`soft`/`exclusive`/`strict`).
 - Strict-mode TypeScript from the first file.
 - Contract-driven architecture, documented in Architecture Decision
   Records before any implementation.
@@ -80,7 +78,7 @@ published).
 ## Follow development
 
 Code, tests, and architecture decisions live in the development
-repository (link to be added here).
+repository.
 
 ## License
 

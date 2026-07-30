@@ -52,15 +52,13 @@ funcionalidades que ainda não existem. Uma versão anterior deste
 projecto foi abandonada a meio de uma refactorização. Em vez de
 publicar por cima disso, recomeçámos com a arquitectura definida e
 documentada antes da primeira linha de implementação. O desenvolvimento
-é público, no repositório de trabalho (link a adicionar aqui assim que
-ambos os repositórios estiverem publicados).
+é público, no repositório de trabalho.
 
 ## O que já está feito
 
 - Web Component nativo (`<ox-icon>`), zero dependências em runtime.
 - Carregamento sob demanda (JIT), por família de ícones.
-- Sistema de contexto e isolamento (`soft`/`exclusive`/`strict`), o
-  diferencial central do produto.
+- Sistema de contexto e isolamento (`soft`/`exclusive`/`strict`).
 - TypeScript em modo strict desde o primeiro ficheiro.
 - Arquitectura dirigida por contratos, documentada em Architecture
   Decision Records antes de qualquer implementação.
@@ -81,7 +79,7 @@ ambos os repositórios estiverem publicados).
 ## Acompanhar o desenvolvimento
 
 Código, testes e decisões de arquitectura ficam no repositório de
-desenvolvimento (link a adicionar aqui).
+desenvolvimento.
 
 ## Licença
 
