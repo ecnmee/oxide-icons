@@ -55,7 +55,7 @@ documentada antes da primeira linha de implementação. O desenvolvimento
 é público, no repositório de trabalho (link a adicionar aqui assim que
 ambos os repositórios estiverem publicados).
 
-## O que já está decidido
+## O que já está feito
 
 - Web Component nativo (`<ox-icon>`), zero dependências em runtime.
 - Carregamento sob demanda (JIT), por família de ícones.
@@ -64,15 +64,17 @@ ambos os repositórios estiverem publicados).
 - TypeScript em modo strict desde o primeiro ficheiro.
 - Arquitectura dirigida por contratos, documentada em Architecture
   Decision Records antes de qualquer implementação.
+- Um primeiro conjunto de ícones original (14 ícones) e um exemplo
+  funcional no browser a ligar tudo ponta a ponta.
 
 ## Roteiro
 
 - [x] Arquitectura e contratos do domínio definidos e documentados.
-- [ ] Implementações de referência (`Registry`, `Catalog`, `Loader`,
+- [x] Implementações de referência (`Registry`, `Catalog`, `Loader`,
       `Renderer`, resolução de contexto).
-- [ ] `<ox-icon>` funcional, primeiro exemplo a correr no browser.
-- [ ] Plugin Vite.
-- [ ] Primeiro conjunto de ícones publicado (transparência total sobre
+- [x] `<ox-icon>` funcional, primeiro exemplo a correr no browser.
+- [x] Plugin Vite.
+- [x] Primeiro conjunto de ícones publicado (transparência total sobre
       quantos ícones existem, sem números inflacionados).
 - [ ] Primeiro release `0.1.0`.
 
