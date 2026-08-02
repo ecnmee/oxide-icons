@@ -8,11 +8,13 @@
   <strong>An icon library that knows where it is.</strong><br />
   Native Web Component, zero dependencies, and the only icon system
   built around explicit isolation between visual icon families in the
-  same application.
+  same application. Stop debugging why the wrong icon style leaked
+  into a section of your app that was never supposed to see it.
 </p>
 
 <p align="center">
-  <strong>In active development. No published release yet.</strong>
+  <strong>Phase 2 of 4 — building the icon catalog.</strong>
+  Architecture and runtime are done. See <a href="#development-phases">phases</a> below.
 </p>
 
 <p align="center">
@@ -44,15 +46,6 @@ decides, predictably and configurably (`soft` / `exclusive` /
 
 Read more: [How Oxide Icons thinks about icons](./docs/concepts.md).
 
-## Why there's no release yet
-
-We'd rather have a small, honest repository than a feature list that
-doesn't exist yet. An earlier version of this project was abandoned
-mid-refactor. Instead of publishing on top of that, we restarted with
-the architecture defined and documented before the first line of
-implementation. Development starts in a private working repository;
-this repository is where the project is published for the community.
-
 ## What's already built
 
 - Native Web Component (`<ox-icon>`), zero runtime dependencies.
@@ -61,19 +54,40 @@ this repository is where the project is published for the community.
 - Strict-mode TypeScript from the first file.
 - Contract-driven architecture, documented in Architecture Decision
   Records before any implementation.
-- A first, original icon set (14 icons) and a working browser example
-  wiring everything end to end.
+- 34 icons across four families (`ui`, `arrows`, `actions`,
+  `navigation`) and a working browser example wiring everything end
+  to end.
 
-## Roadmap
+## Development phases
 
-- [x] Domain architecture and contracts defined and documented.
-- [x] Reference implementations (`Registry`, `Catalog`, `Loader`,
-      `Renderer`, context resolution).
-- [x] Functional `<ox-icon>`, first example running in the browser.
-- [x] Vite plugin.
-- [x] First icon set published (full transparency on how many icons
-      exist, no inflated numbers).
-- [ ] First `0.1.0` release.
+Not a release yet, no pretending otherwise, but not standing still
+either. Four phases, in order, each one a real milestone:
+
+1. **Architecture and runtime** — done. Domain contracts, the
+   isolation system, `<ox-icon>`, the Vite plugin, all built against
+   real tests, not sketched.
+2. **Icon catalog** — in progress. Built so far: `UI Essentials`,
+   `Actions`, `Navigation` (34 icons). Still ahead: `Files & Folders`,
+   `Communication`, `Media`, `Devices`, `Commerce`, `Security`,
+   `Weather`, and `Brands` if it makes the cut. Coverage, not a
+   count, is the finish line, see the note below.
+3. **Getting Started, written against the real package** — not
+   before there's something installable. A promise you can run beats
+   a promise you can read.
+4. **Publish** — `npm publish`, first GitHub release.
+
+We're not chasing "5000 icons" as a launch number. A useful, coherent
+set beats an arbitrary one, what differentiates this project is the
+architecture, not the catalog size.
+
+## Why there's no release yet
+
+We'd rather have a small, honest repository than a feature list that
+doesn't exist yet. An earlier version of this project was abandoned
+mid-refactor. Instead of publishing on top of that, we restarted with
+the architecture defined and documented before the first line of
+implementation. Development starts in a private working repository;
+this repository is where the project is published for the community.
 
 ## Follow development
 
