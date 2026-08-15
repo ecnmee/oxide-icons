@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oxide Icons, basic example</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      color: #1a1a2e;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #555;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.4rem;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .row ox-icon {
+      display: block;
+    }
+    figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: #666;
+    }
+    code {
+      background: #f4f4f6;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+    }
+    pre {
+      background: #f4f4f6;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+    }
+    #error-count {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Oxide Icons</h1>
+  <p>
+    Real <code>&lt;ox-icon&gt;</code> elements, real icon files from
+    <code>src/icons/</code>, wired end to end: <code>createIconSource</code>
+    to <code>Registry</code> to <code>IsolationPolicy</code> to
+    <code>SvgIconRenderer</code>. See <code>main.ts</code> for the wiring,
+    it is the only file in the whole project allowed to call
+    <code>import.meta.glob</code> directly, see ADR-0014.
+  </p>
+
+  <section>
+    <h2>Usage</h2>
+    <pre><code>&lt;ox-icon name="add" family="ui"&gt;&lt;/ox-icon&gt;
+&lt;ox-icon name="add" size="32" color="#0a7d33" stroke-width="1.5"&gt;&lt;/ox-icon&gt;</code></pre>
+    <p>
+      <code>family</code> is optional when the surrounding element
+      declares <code>data-icon-family</code>, see the isolation section
+      below.
+    </p>
+  </section>
+
+  <section>
+    <h2>
+      Full catalog
+      <span id="catalog-count" style="font-weight: normal; text-transform: none; letter-spacing: normal;"></span>
+    </h2>
+    <input
+      id="catalog-filter"
+      type="text"
+      placeholder="Filter, e.g. &quot;cloud&quot; or &quot;security:&quot;"
+      style="width: 100%; box-sizing: border-box; padding: 0.5rem 0.75rem; margin-bottom: 1.5rem; border: 1px solid #ddd; border-radius: 4px; font-size: 0.9rem;"
+    />
+    <div id="catalog"><!-- filled from `manifest` in main.ts, every real icon, nothing hand-listed --></div>
+  </section>
+
+  <section>
+    <h2>The full ui set, default size and color</h2>
+    <div class="row" data-icon-family="ui">
+      <figure><ox-icon name="add"></ox-icon><figcaption>add</figcaption></figure>
+      <figure><ox-icon name="remove"></ox-icon><figcaption>remove</figcaption></figure>
+      <figure><ox-icon name="close"></ox-icon><figcaption>close</figcaption></figure>
+      <figure><ox-icon name="check"></ox-icon><figcaption>check</figcaption></figure>
+      <figure><ox-icon name="search"></ox-icon><figcaption>search</figcaption></figure>
+      <figure><ox-icon name="edit"></ox-icon><figcaption>edit</figcaption></figure>
+      <figure><ox-icon name="trash"></ox-icon><figcaption>trash</figcaption></figure>
+      <figure><ox-icon name="menu"></ox-icon><figcaption>menu</figcaption></figure>
+      <figure><ox-icon name="chevron-down"></ox-icon><figcaption>chevron-down</figcaption></figure>
+      <figure><ox-icon name="chevron-right"></ox-icon><figcaption>chevron-right</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Arrows family</h2>
+    <div class="row" data-icon-family="arrows">
+      <figure><ox-icon name="left"></ox-icon><figcaption>left</figcaption></figure>
+      <figure><ox-icon name="right"></ox-icon><figcaption>right</figcaption></figure>
+      <figure><ox-icon name="up"></ox-icon><figcaption>up</figcaption></figure>
+      <figure><ox-icon name="down"></ox-icon><figcaption>down</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>size / color / stroke-width attributes</h2>
+    <div class="row" data-icon-family="ui">
+      <ox-icon name="check" size="16" color="#0a7d33"></ox-icon>
+      <ox-icon name="check" size="24" color="#0a7d33" stroke-width="1.5"></ox-icon>
+      <ox-icon name="check" size="40" color="#0a7d33" stroke-width="2.5"></ox-icon>
+      <ox-icon name="check" size="64" color="#0a7d33" stroke-width="1"></ox-icon>
+    </div>
+  </section>
+
+  <section>
+    <h2>Isolation modes, live</h2>
+    <p>
+      <code>soft</code>: allowed, but warns in the console.
+      <code>exclusive</code>: silently renders nothing.
+      <code>strict</code>: reported via <code>oxide-icon-error</code>,
+      never a page-breaking throw, see ADR-0013.
+    </p>
+    <div class="row">
+      <figure data-icon-family="ui" data-icon-isolation="soft">
+        <ox-icon name="add" family="arrows"></ox-icon>
+        <figcaption>soft mismatch<br />(check console)</figcaption>
+      </figure>
+      <figure data-icon-family="ui" data-icon-isolation="exclusive">
+        <ox-icon name="add" family="arrows"></ox-icon>
+        <figcaption>exclusive mismatch<br />(renders nothing)</figcaption>
+      </figure>
+      <figure data-icon-family="ui" data-icon-isolation="strict">
+        <ox-icon name="add" family="arrows"></ox-icon>
+        <figcaption>strict mismatch<br />(reported, see counter)</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Error reporting</h2>
+    <p>
+      <code>oxide-icon-error</code> events caught so far:
+      <span id="error-count">0</span>
+    </p>
+  </section>
+
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>

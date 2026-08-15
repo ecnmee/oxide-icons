@@ -1,38 +1,68 @@
-# How Oxide Icons thinks about icons
+# Icon families and isolation
 
-Most icon libraries answer one question: give me an icon. Oxide Icons
-also answers a second one, that none of the popular libraries address:
-should this icon even be allowed here.
+This page explains the mental model behind Oxide Icons: what a family
+is, and how isolation between families works. It describes the design
+as decided (see ADR-0004), ahead of a working implementation. There is
+no runnable `<ox-icon>` yet, see the roadmap in the main README for
+current status.
 
-## Every icon belongs to a family
+## The problem in one sentence
 
-Not a loose tag, a real boundary. `ui:add`, `arrows:left`,
-`medical:hospital`. An icon is never just a name, it is always a name
-inside a family.
+Most applications end up mixing icons from more than one source over
+time, usually by accident, and nothing catches it.
+
+## Icons live in families
+
+Every icon belongs to exactly one family, a named group with a shared
+visual language, for example `ui` or `arrows`. An icon's full identity
+is always `family:name`, for example `ui:add`. There is no such thing
+as an icon with no family.
 
 ## An area of your app can declare what it expects
 
+You mark a part of the DOM with the family it expects:
+
 ```html
-<div data-icon-family="finance" data-icon-isolation="strict">
-  <ox-icon name="invoice"></ox-icon>              <!-- fine -->
-  <ox-icon name="hospital" family="medical"></ox-icon>  <!-- blocked -->
+<div data-icon-family="ui">
+  <ox-icon name="add"></ox-icon>
 </div>
 ```
 
-Three isolation modes, chosen per area: `soft` warns, `exclusive`
-silently blocks, `strict` throws. This is not a lint rule that catches
-mistakes at commit time if someone remembers to run it. It is a
-runtime guarantee, in every environment your app actually runs in.
+Every `<ox-icon>` inside that area inherits `ui` as its expected
+family, unless it explicitly asks for a different one.
 
-## Why this matters
+## What happens when something does not match
 
-Design systems, white-label products, and multi-team codebases all
-eventually mix icon sources by accident. Nothing today catches it at
-the point it happens. This is the part of the problem Oxide Icons is
-built around, everything else (bundle size, loading strategy, the Web
-Component itself) exists to support that one guarantee well.
+That is where isolation mode comes in. Three modes, chosen per area:
 
-Full technical detail lives in the Architecture Decision Records in the
-development repository.
+- `soft` (the default): an icon from a different family is still
+  rendered, but a warning is logged. Use this while you are migrating
+  or exploring, when you want visibility without breaking anything.
+- `exclusive`: an icon from a different family is silently not
+  rendered. Use this when a mismatch should be invisible to the end
+  user, not a hard failure.
+- `strict`: an icon from a different family throws. Use this in areas
+  where a mismatch is a bug that should fail loudly, in development and
+  in tests.
 
-[Ler esta página em português](./concepts.pt.md)
+```html
+<div data-icon-family="finance" data-icon-isolation="strict">
+  <ox-icon name="invoice"></ox-icon>                 <!-- fine -->
+  <ox-icon name="hospital" family="medical"></ox-icon>  <!-- throws -->
+</div>
+```
+
+## Why this is not just a lint rule
+
+A lint rule catches this at commit time, if someone remembers to run
+it, and only for icons a static analyzer can see. This is a runtime
+guarantee: it holds regardless of how the icon name got there, a
+prop, a CMS field, output from another system, and it holds in every
+environment the app actually runs in, not only in CI.
+
+## What this page does not cover yet
+
+API reference for `<ox-icon>` itself, the Vite plugin, and the loader
+system will be documented once they exist as working code, not before.
+See the ADRs in `docs/en/adr/` for the underlying contracts if you want
+the implementation-level detail today.
