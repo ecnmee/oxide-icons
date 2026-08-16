@@ -1,6 +1,7 @@
 {
   "name": "oxide-icons",
-  "version": "0.1.0",
+  "version": "0.1.0-dev.0",
+  "private": true,
   "type": "module",
   "description": "SVG icon system with a native Web Component and isolation between icon families. In active development, see docs/en/adr/README.md.",
   "license": "MIT",
@@ -38,7 +39,7 @@
   ],
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "tsc",
+    "build": "tsc && node fix-esm-extensions.mjs",
     "test": "vitest run",
     "example:dev": "vite --config examples/basic/vite.config.ts",
     "example:build": "vite build --config examples/basic/vite.config.ts",
