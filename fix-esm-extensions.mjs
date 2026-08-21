@@ -17,6 +17,7 @@
 
 import { readFileSync, writeFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const distDir = path.resolve(process.cwd(), process.argv[2] ?? 'dist');
 
@@ -93,7 +94,13 @@ function main() {
   console.log(`fix-esm-extensions: patched ${changed} of ${files.length} file(s) in ${path.relative(process.cwd(), distDir) || '.'}`);
 }
 
-// Only run as a script, not when imported by the test.
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Only run as a script, not when imported by the test. Uses
+// `pathToFileURL`, not a naive `file://${process.argv[1]}` string
+// concatenation: `process.argv[1]` is a plain path (backslashes on
+// Windows), not a URL, and the naive version silently never matches
+// there — `main()` never runs, the script exits 0 having patched
+// nothing, no error at all. See ADR-0019 and the identical fix
+// applied to `generate-catalog.mjs`'s own entry-point guard.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   main();
 }

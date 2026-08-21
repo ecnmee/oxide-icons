@@ -1,8 +1,15 @@
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync, readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import os from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { fixFileContent } from '../../fix-esm-extensions.mjs';
+
+const scriptPath = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '../../fix-esm-extensions.mjs'
+);
 
 let tmpRoot: string;
 
@@ -95,6 +102,25 @@ describe('fixFileContent', () => {
 
     expect(fixed).toBe(
       "import { a } from './a.js';\nimport { b } from './b.js';\nimport 'vite';\n"
+    );
+  });
+});
+
+describe('running the script for real, as a child process', () => {
+  it('actually runs main() and patches dist/ — regression guard for the entry-point check', () => {
+    write('dist/index.js', "import { x } from './helper';\n");
+    write('dist/helper.js', "export const x = 1;\n");
+
+    const distDir = path.join(tmpRoot, 'dist');
+    const output = execFileSync(process.execPath, [scriptPath, distDir]).toString();
+
+    // Would silently print nothing and patch nothing if the script's
+    // own `if (import.meta.url === ...)` entry-point guard failed to
+    // match — exactly the bug this test exists to catch, see the
+    // guard's own comment in fix-esm-extensions.mjs.
+    expect(output).toMatch(/fix-esm-extensions: patched 1 of 2 file\(s\)/);
+    expect(readFileSync(path.join(distDir, 'index.js'), 'utf8')).toBe(
+      "import { x } from './helper.js';\n"
     );
   });
 });
