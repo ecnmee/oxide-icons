@@ -1,7 +1,7 @@
 {
   "name": "oxide-icons",
-  "version": "0.1.5",
-  "private": false,
+  "version": "0.1.0-dev.0",
+  "private": true,
   "type": "module",
   "description": "SVG icon system with a native Web Component and isolation between icon families. In active development, see docs/en/adr/README.md.",
   "license": "MIT",
@@ -57,10 +57,10 @@
     }
   },
   "devDependencies": {
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5",
     "@types/node": "^22.5.0",
     "jsdom": "^25.0.0",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.21",
-    "vitest": "^2.0.5"
+    "vite": "^5.4.21"
   }
 }
