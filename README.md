@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <strong>Phase 2 of 4 — building the icon catalog.</strong>
+  <strong>Phase 2 of 4: building the icon catalog.</strong>
   Architecture and runtime are done. See <a href="#development-phases">phases</a> below.
 </p>
 
@@ -60,34 +60,37 @@ Read more: [How Oxide Icons thinks about icons](./docs/concepts.md).
 
 ## Development phases
 
-Not a release yet, no pretending otherwise, but not standing still
-either. Four phases, in order, each one a real milestone:
+The package is already published and usable. The project is still in
+active development, with four phases covering the catalogue, documentation,
+and future releases:
 
-1. **Architecture and runtime** — done. Domain contracts, the
+1. **Architecture and runtime**: done. Domain contracts, the
    isolation system, `<ox-icon>`, the Vite plugin, all built against
    real tests, not sketched.
-2. **Icon catalog** — in progress. Built so far: `UI Essentials`,
+2. **Icon catalog**: in progress. Built so far: `UI Essentials`,
    `Actions`, `Navigation` (34 icons). Still ahead: `Files & Folders`,
    `Communication`, `Media`, `Devices`, `Commerce`, `Security`,
    `Weather`, and `Brands` if it makes the cut. Coverage, not a
    count, is the finish line, see the note below.
-3. **Getting Started, written against the real package** — not
-   before there's something installable. A promise you can run beats
-   a promise you can read.
-4. **Publish** — `npm publish`, first GitHub release.
+3. **Getting Started, written against the real package**: the guide is
+   being built around the package that is already available.
+4. **Release and iteration**: continue improving the catalogue,
+   documentation, tests, and package releases.
 
 We're not chasing "5000 icons" as a launch number. A useful, coherent
 set beats an arbitrary one, what differentiates this project is the
 architecture, not the catalog size.
 
-## Why there's no release yet
+## Current status
 
-We'd rather have a small, honest repository than a feature list that
-doesn't exist yet. An earlier version of this project was abandoned
-mid-refactor. Instead of publishing on top of that, we restarted with
-the architecture defined and documented before the first line of
-implementation. Development starts in a private working repository;
-this repository is where the project is published for the community.
+Oxide Icons is already published and can be installed and used in a
+project. The package is still evolving, so the current release should be
+seen as an early version rather than a finished catalogue.
+
+An earlier version of the project was abandoned during a refactor. Instead
+of continuing from that codebase, we restarted with the architecture
+defined and documented before implementation. The current package is the
+result of that restart and is already being used in a test project.
 
 ## Follow development
 
