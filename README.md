@@ -13,8 +13,8 @@
 </p>
 
 <p align="center">
-  <strong>Phase 2 of 4: building the icon catalog.</strong>
-  Architecture and runtime are done. See <a href="#development-phases">phases</a> below.
+  <strong>Phase 3 of 4: writing Getting Started against the real package.</strong>
+  Architecture, runtime, and the 104-icon catalog are done. See <a href="#development-phases">phases</a> below.
 </p>
 
 <p align="center">
@@ -54,9 +54,10 @@ Read more: [How Oxide Icons thinks about icons](./docs/concepts.md).
 - Strict-mode TypeScript from the first file.
 - Contract-driven architecture, documented in Architecture Decision
   Records before any implementation.
-- 34 icons across four families (`ui`, `arrows`, `actions`,
-  `navigation`) and a working browser example wiring everything end
-  to end.
+- 104 icons across 11 families (`ui`, `arrows`, `actions`,
+  `navigation`, `files-folders`, `communication`, `media`, `devices`,
+  `commerce`, `security`, `weather`) and a working browser example
+  wiring everything end to end.
 
 ## Development phases
 
@@ -67,10 +68,10 @@ and future releases:
 1. **Architecture and runtime**: done. Domain contracts, the
    isolation system, `<ox-icon>`, the Vite plugin, all built against
    real tests, not sketched.
-2. **Icon catalog**: in progress. Built so far: `UI Essentials`,
-   `Actions`, `Navigation` (34 icons). Still ahead: `Files & Folders`,
+2. **Icon catalog**: done. All 11 planned families are built: `UI
+   Essentials`, `Actions`, `Navigation`, `Files & Folders`,
    `Communication`, `Media`, `Devices`, `Commerce`, `Security`,
-   `Weather`, and `Brands` if it makes the cut. Coverage, not a
+   `Weather`, `Arrows` (104 icons). Coverage, not a
    count, is the finish line, see the note below.
 3. **Getting Started, written against the real package**: the guide is
    being built around the package that is already available.

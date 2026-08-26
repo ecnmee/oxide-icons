@@ -13,8 +13,9 @@
 </p>
 
 <p align="center">
-  <strong>Fase 2 de 4: catálogo de ícones em desenvolvimento.</strong><br />
-  A arquitectura e o runtime já estão feitos. Consulte as
+  <strong>Fase 3 de 4: Getting Started a ser escrito sobre o pacote real.</strong><br />
+  A arquitectura, o runtime, e o catálogo de 104 ícones já estão feitos.
+  Consulte as
   <a href="#fases-de-desenvolvimento">fases de desenvolvimento</a> abaixo.
 </p>
 
@@ -61,8 +62,9 @@ Leia mais em
 - TypeScript em modo strict desde o primeiro ficheiro.
 - Arquitectura orientada por contratos, documentada em Architecture Decision
   Records antes da implementação.
-- 34 ícones distribuídos por quatro famílias: `ui`, `arrows`, `actions` e
-  `navigation`.
+- 104 ícones distribuídos por 11 famílias: `ui`, `arrows`, `actions`,
+  `navigation`, `files-folders`, `communication`, `media`, `devices`,
+  `commerce`, `security` e `weather`.
 - Exemplo funcional no browser a demonstrar o fluxo completo.
 
 ## Fases de desenvolvimento
@@ -74,10 +76,10 @@ com um objectivo concreto.
 1. **Arquitectura e runtime:** concluída. Os contratos do domínio, o sistema
    de isolamento, o `<ox-icon>` e o plugin Vite foram construídos e testados.
 
-2. **Catálogo de ícones:** em curso. Já estão disponíveis `UI Essentials`,
-   `Actions` e `Navigation`, num total de 34 ícones. As próximas famílias são
+2. **Catálogo de ícones:** concluído. As 11 famílias planeadas estão
+   disponíveis: `UI Essentials`, `Actions`, `Navigation`,
    `Files & Folders`, `Communication`, `Media`, `Devices`, `Commerce`,
-   `Security`, `Weather` e, caso permaneça no âmbito do projecto, `Brands`.
+   `Security`, `Weather` e `Arrows`, num total de 104 ícones.
    O objectivo é ter uma cobertura útil e consistente, não atingir uma
    quantidade arbitrária de ícones.
 
